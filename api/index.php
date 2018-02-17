@@ -4,10 +4,10 @@
 $i = explode(",", $_GET['i']);
 
 //在此替换空格！！！！！！！！！！！！！！！！！！！！！
-$ii = "接警：".$i[0]."-".$i[1]."%0A"."电话：".$i[2]."%0A"."地址：".$i[3]."%0A"."车辆：%0A".$i[4];
+$ii = "接警：".str_replace(" ", "-", $i[0])."%0A"."电话：".$i[1]."%0A"."地址：".$i[2]."%0A"."车辆：%0A".str_replace(")0", ")%0A0",  str_replace(" ", "", $i[3]));
 $url = 'http://127.0.0.1:3000/openwx/send_group_message?displayname=test&content='.$ii;
 
-print_r($url);
+print_r($i);
 
 // 初始化一个 cURL 对象 
 $curl = curl_init(); 
